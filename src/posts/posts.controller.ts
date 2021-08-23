@@ -2,6 +2,7 @@ import {Body, Post, UploadedFile, UseInterceptors} from '@nestjs/common';
 import { Controller } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import {PostsService} from "./posts.service";
+import {CreatePostDto} from "./dto/create-post.dto";
 
 @Controller('posts')
 export class PostsController {
@@ -10,7 +11,7 @@ export class PostsController {
 
     @Post()
     @UseInterceptors(FileInterceptor('image'))
-    createPost(@Body() @UploadedFile() image) {
-        return this.postService.create(image);
+    createPost(@Body() dto: CreatePostDto, @UploadedFile() image) {
+        return this.postService.create(dto, image);
     }
 }

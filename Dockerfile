@@ -1,6 +1,6 @@
-FROM node:12.13-alpine
+FROM node:14
 
-WORKDIR /USERS/nick/WebstormProjects/task-5_3-nest
+WORKDIR /var/www/html
 
 COPY package*.json ./
 
@@ -9,5 +9,7 @@ RUN npm install
 COPY . .
 
 COPY ./dist ./dist
+
+EXPOSE 8080
 
 CMD ["npm", "run", "start:dev"]

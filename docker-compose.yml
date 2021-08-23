@@ -3,17 +3,21 @@ services:
   nodejs:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./Dockerfile
     image: nodejs-mysql-app
     depends_on:
       - mysql
+    stdin_open: true
+    tty: true
+    env_file:
+      - ./.development.env
     environment:
       - MYSQL_HOST=mysql
       - MYSQL_USER=task8-3_u
       - MYSQL_PASS=rgegr79serg4geRg
       - MYSQL_DB=task8-3
     volumes:
-      - ./:/var/www
+      - .:/var/www/http
     ports:
       - "5000:5000"
     container_name: nodejs_back
