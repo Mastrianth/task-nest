@@ -1,0 +1,32 @@
+version: "3.2"
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nodejs-mysql-app
+    depends_on:
+      - mysql
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=task8-3_u
+      - MYSQL_PASS=rgegr79serg4geRg
+      - MYSQL_DB=task8-3
+    volumes:
+      - ./:/var/www
+    ports:
+      - "5000:5000"
+    container_name: nodejs_back
+  mysql:
+    image: mysql:latest
+    command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./docker/database:/var/lib/mysql:rw
+    environment:
+      - MYSQL_USER=task8-3_u
+      - MYSQL_PASSWORD=rgegr79serg4geRg
+      - MYSQL_DATABASE=task8-3
+      - MYSQL_ALLOW_EMPTY_PASSWORD=TRUE
+    container_name: mysql
+    ports:
+      - "3307:3306"
