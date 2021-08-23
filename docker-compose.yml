@@ -18,7 +18,7 @@ services:
       - MYSQL_PASS=rgegr79serg4geRg
       - MYSQL_DB=task8-3
     volumes:
-      - .:/var/www/http
+      - .:/var/www/html
     ports:
       - "5000:5000"
     restart: "on-failure"
