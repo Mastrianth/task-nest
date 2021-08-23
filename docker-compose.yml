@@ -12,6 +12,7 @@ services:
     env_file:
       - ./.development.env
     environment:
+      - DEBUG=true
       - MYSQL_HOST=mysql
       - MYSQL_USER=task8-3_u
       - MYSQL_PASS=rgegr79serg4geRg
@@ -20,7 +21,10 @@ services:
       - .:/var/www/http
     ports:
       - "5000:5000"
+    restart: "on-failure"
+    command: "npm run start:debug"
     container_name: nodejs_back
+
   mysql:
     image: mysql:latest
     command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci

@@ -5,21 +5,32 @@
     "database": "task8-3",
     "host": "mysql",
     "dialect": "mysql",
-    "port": "3307"
+    "port": "3306",
+    "dialectOptions": {
+      "bigNumberStrings": true
+    }
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "task8-3_u",
+    "password": "rgegr79serg4geRg",
+    "database": "task8-3",
+    "host": "mysql",
+    "dialect": "mysql",
+    "port": "3306",
+    "dialectOptions": {
+      "bigNumberStrings": true
+    }
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "task8-3_u",
+    "password": "rgegr79serg4geRg",
+    "database": "task8-3",
+    "host": "mysql",
+    "dialect": "mysql",
+    "port": "3306",
+    "dialectOptions": {
+      "bigNumberStrings": true
+    }
   },
   "local": {
     "username": "task8-3_u",
@@ -27,6 +38,9 @@
     "database": "task8-3",
     "host": "mysql",
     "dialect": "mysql",
-    "port": "3307"
+    "port": "3306",
+    "dialectOptions": {
+      "bigNumberStrings": true
+    }
   }
 }
