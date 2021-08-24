@@ -3,7 +3,6 @@ import { Controller } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import {PostsService} from "./posts.service";
 import {CreatePostDto} from "./dto/create-post.dto";
-import {diskStorage} from "multer";
 import {FilesHelper} from "../files/files.helper";
 
 @Controller('posts')
