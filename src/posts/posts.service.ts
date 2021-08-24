@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import {BadRequestException, Injectable} from '@nestjs/common';
 import {InjectModel} from "@nestjs/sequelize";
 import { Post } from './posts.model';
 import {FilesService} from "../files/files.service";
@@ -12,8 +12,14 @@ export class PostsService {
     }
 
     async create(dto: CreatePostDto, image: any) {
+        console.log(image);
         const fileName = await this.fileService.createFile(image);
         const post = await this.postRepository.create({...dto, image: fileName});
-        return post;
+        const response = {
+            post,
+            mimetype: image.mimetype,
+            size: image.size,
+        }
+        return response;
     }
 }
