@@ -16,8 +16,7 @@ export class ImageMagicService {
         console.log(fileNameNew);
         gm(`dist/static/${fileName}`)
             .size((err, size) => {
-            const initSize = size;
-            if (!err) console.log(initSize);
+            if (!err) console.log(size);
         }).write(`dist/static/${fileNameNew}init.jpeg`, async (err) => {
             if (err) console.log(err);
             console.log('To initial image!');
@@ -104,11 +103,11 @@ export class ImageMagicService {
             .stroke('#ffffff')
             .resize(150, 150, '!')
             .drawText(0, 10, `Копия,${date}`)
-            .write(`dist/static/${fileNameNew}150x150.jpeg`, async (err) => {
+            .write(`dist/static/${fileNameNew}_150x150.jpeg`, async (err) => {
                 if (err) console.log(err);
                 console.log('To jpeg 150x150!');
                 await ImageOptimisation.create({
-                    nameImage: `${fileNameNew}150x150.jpeg`,
+                    nameImage: `${fileNameNew}_150x150.jpeg`,
                     isOptimized: false
                 });
             });
@@ -118,11 +117,11 @@ export class ImageMagicService {
             .stroke('#ffffff')
             .resize(200, 200, '!')
             .drawText(0, 10, `Копия,${date}`)
-            .write(`dist/static/${fileNameNew}200x200.jpeg`, async (err) => {
+            .write(`dist/static/${fileNameNew}_200x200.jpeg`, async (err) => {
                 if (err) console.log(err);
                 console.log('To jpeg 200x200!');
                 await ImageOptimisation.create({
-                    nameImage: `${fileNameNew}200x200.jpeg`,
+                    nameImage: `${fileNameNew}_200x200.jpeg`,
                     isOptimized: false
                 });
             });
@@ -132,11 +131,11 @@ export class ImageMagicService {
             .stroke('#ffffff')
             .resize(350, 350, '!')
             .drawText(0, 10, `Копия,${date}`)
-            .write(`dist/static/${fileNameNew}350x350.jpeg`, async (err) => {
+            .write(`dist/static/${fileNameNew}_350x350.jpeg`, async (err) => {
                 if (err) console.log(err);
                 console.log('To jpeg 350x350!');
-                const imageNewLoadOpt = await ImageOptimisation.create({
-                    nameImage: `${fileNameNew}350x350.jpeg`,
+                await ImageOptimisation.create({
+                    nameImage: `${fileNameNew}_350x350.jpeg`,
                     isOptimized: false
                 });
             });
@@ -151,7 +150,7 @@ export class ImageMagicService {
                 if (err) console.log(err);
                 console.log('To bmp!');
                 await ImageOptimisation.create({
-                    nameImage: `${fileNameNew}500x500.bmp`,
+                    nameImage: `${fileNameNew}_500x500.bmp`,
                     isOptimized: false
                 });
             });
