@@ -19,6 +19,8 @@ services:
       - MYSQL_DB=task8-3
     volumes:
       - .:/var/www/html
+    networks:
+      - sail
     ports:
       - "5000:5000"
     restart: "on-failure"
@@ -30,6 +32,8 @@ services:
     command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - ./docker/database:/var/lib/mysql:rw
+    networks:
+      - sail
     environment:
       - MYSQL_USER=task8-3_u
       - MYSQL_PASSWORD=rgegr79serg4geRg
@@ -38,3 +42,25 @@ services:
     container_name: mysql
     ports:
       - "3307:3306"
+
+  redis:
+    image: 'redis:alpine'
+    ports:
+      - '6379:6379'
+    volumes:
+      - 'sailredis:/data'
+    networks:
+      - sail
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      retries: 3
+      timeout: 5s
+
+networks:
+  sail:
+    driver: bridge
+volumes:
+  sailmysql:
+    driver: local
+  sailredis:
+    driver: local

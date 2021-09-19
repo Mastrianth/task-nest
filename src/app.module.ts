@@ -8,6 +8,9 @@ import {Post} from "./posts/posts.model";
 import {ConfigModule} from '@nestjs/config';
 import {ImageMagicModule} from './image-magic/image-magic.module';
 import {ImageOptimisation} from "./image-magic/image-magic.model";
+import { KrakenModule } from './kraken/kraken.module';
+import { BullModule } from '@nestjs/bull';
+
 
 @Module({
     controllers: [],
@@ -30,9 +33,16 @@ import {ImageOptimisation} from "./image-magic/image-magic.model";
         ServeStaticModule.forRoot({
             rootPath: path.resolve(__dirname, 'static'),
         }),
+        BullModule.forRoot({
+            redis: {
+                host: 'localhost',
+                port: 6379,
+            }
+        }),
         FilesModule,
         PostsModule,
-        ImageMagicModule
+        ImageMagicModule,
+        KrakenModule
     ],
 })
 export class AppModule {

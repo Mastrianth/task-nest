@@ -5,6 +5,7 @@ import {SequelizeModule} from "@nestjs/sequelize";
 import {Post} from "./posts.model";
 import {FilesModule} from "../files/files.module";
 import {ImageMagicModule} from "../image-magic/image-magic.module";
+import {KrakenModule} from "../kraken/kraken.module";
 
 @Module({
   controllers: [PostsController],
@@ -12,7 +13,8 @@ import {ImageMagicModule} from "../image-magic/image-magic.module";
   imports: [
       SequelizeModule.forFeature([Post]),
       FilesModule,
-      ImageMagicModule
+      ImageMagicModule,
+      KrakenModule
   ]
 })
 export class PostsModule {}

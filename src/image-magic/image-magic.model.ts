@@ -2,8 +2,12 @@ import {Column, DataType, Model, Table} from "sequelize-typescript";
 
 
 interface ImageOptimisationAttrs {
-    isOptimized: boolean;
-    nameImage: string;
+    is_optimized: boolean;
+    name_image: string;
+    weight: number;
+    type: string;
+    originalWidth: string;
+    originalHeight: string;
 }
 
 @Table({tableName: 'image-optimization'})
@@ -13,9 +17,21 @@ export class ImageOptimisation extends Model<ImageOptimisation, ImageOptimisatio
     id: number;
 
     @Column({type: DataType.BOOLEAN, defaultValue: false})
-    isOptimized: boolean;
+    is_optimized: boolean;
 
     @Column({type: DataType.STRING})
-    nameImage: string;
+    name_image: string;
+
+    @Column({type: DataType.STRING})
+    type: string;
+
+    @Column({type: DataType.STRING})
+    original_width: string;
+
+    @Column({type: DataType.STRING})
+    original_height: string;
+
+    @Column({type: DataType.NUMBER})
+    weight: number;
 
 }
